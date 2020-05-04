@@ -33,7 +33,7 @@ export const rootRouterConfig: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home/one'
+    redirectTo: 'home'
   }
 ];
 

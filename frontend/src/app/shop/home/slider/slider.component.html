@@ -1,16 +1,17 @@
 <!-- Home slider -->
+<!-- color-g1.css dosyasında  .home-slider .home.home1 jpg formatında image src verilmiş -->
 <section class="p-0">
   <ngx-slick-carousel class="home-slider" #slickModal="slick-carousel" [config]="sliderConfig">
     <div ngxSlickItem>
-      <div class="home home1 text-center">
+      <div class="home text-center" style="background-image:URL('/assets/images/home-banner/home_app-slider1.jpg')">
         <div class="container">
           <div class="row">
             <div class="col">
               <div class="slider-contain">
                 <div>
-                  <h4>welcome to fashion</h4>
-                  <h1>Men fashion</h1>
-                  <a [routerLink]="'/home/left-sidebar/collection/men'" class="btn btn-solid">shop now</a>
+                  <h4>Modaya Hoşgeldiniz</h4>
+                  <h1>Erkek Moda</h1>
+                  <a [routerLink]="'/home/left-sidebar/collection/men'" class="btn btn-solid">ALIŞVERİŞE BAŞLA</a>
                 </div>
               </div>
             </div>
@@ -19,15 +20,15 @@
       </div>
     </div>
     <div ngxSlickItem>
-      <div class="home home2 text-center">
+      <div class="home text-center" style="background-image:URL('/assets/images/home-banner/home_app-slider2.jpg')">
         <div class="container">
           <div class="row">
             <div class="col">
               <div class="slider-contain">
                 <div>
-                  <h4>welcome to fashion</h4>
-                  <h1>Women fashion</h1>
-                  <a [routerLink]="'/home/left-sidebar/collection/women'" class="btn btn-solid">shop now</a>
+                  <h4>Modaya Hoşgeldiniz</h4>
+                  <h1>Kadın Moda</h1>
+                  <a [routerLink]="'/home/left-sidebar/collection/women'" class="btn btn-solid">ALIŞVERİŞE BAŞLA</a>
                 </div>
               </div>
             </div>

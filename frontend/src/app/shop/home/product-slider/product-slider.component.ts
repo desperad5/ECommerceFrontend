@@ -18,8 +18,8 @@ export class ProductSliderComponent implements OnInit {
   public productSlideConfig: any = {
     infinite: true,
     speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 6,
+    slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     responsive: [{
