@@ -5,7 +5,8 @@ import { CartItem } from '../../shared/classes/cart-item';
 import { ProductsService } from '../../shared/services/products.service';
 import { WishlistService } from '../../shared/services/wishlist.service';
 import { CartService } from '../../shared/services/cart.service';
-import { Observable, of } from 'rxjs';
+
+import localeTr from '@angular/common/locales/tr';
 
 @Component({
   selector: 'app-product',
@@ -22,6 +23,7 @@ export class ProductComponent implements OnInit {
 
   constructor(private router: Router, public productsService: ProductsService, 
     private wishlistService: WishlistService, private cartService: CartService) { 
+      debugger;
   }
 
   ngOnInit() {  }

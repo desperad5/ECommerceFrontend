@@ -13,7 +13,7 @@ let products = JSON.parse(localStorage.getItem("compareItem")) || [];
 
 export class ProductsService {
   
-  public currency : string = 'USD';
+  public currency : string = 'TRY';
   public catalogMode : boolean = false;
   
   public compareProducts : BehaviorSubject<Product[]> = new BehaviorSubject([]);

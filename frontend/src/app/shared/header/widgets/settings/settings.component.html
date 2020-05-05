@@ -10,18 +10,20 @@
       <div><img src="assets/images/icon/setting.png" class="img-fluid" alt="">
         <i class="ti-settings"></i></div>
       <div class="show-div setting">
-        <h6>language</h6>
+        <h6>Dil</h6>
         <ul>
+          <li><a [routerLink]="" (click)="changeLanguage('tr')">Türkçe</a> </li>
           <li><a [routerLink]="" (click)="changeLanguage('en')">English</a> </li>
-          <li><a [routerLink]="" (click)="changeLanguage('fr')">French</a> </li>
+          <!-- <li><a [routerLink]="" (click)="changeLanguage('fr')">French</a> </li> -->
         </ul>
-        <h6 *ngIf="!productsService?.catalogMode">currency</h6>
+        <!-- <h6 *ngIf="!productsService?.catalogMode">Para Birimi</h6>
         <ul class="list-inline" *ngIf="!productsService?.catalogMode">
+          <li><a [routerLink]="" (click)="updateCurrency('TL')">Türk Lirası</a> </li>
           <li><a [routerLink]="" (click)="updateCurrency('USD')">Dollar</a> </li>
           <li><a [routerLink]="" (click)="updateCurrency('EUR')">Euro</a> </li>
           <li><a [routerLink]="" (click)="updateCurrency('INR')">Rupees</a> </li>
           <li><a [routerLink]="" (click)="updateCurrency('GBP')">Pound</a> </li>
-        </ul>
+        </ul> -->
       </div>
     </li>
     <li class="onhover-div mobile-cart" *ngIf="!productsService?.catalogMode">

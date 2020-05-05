@@ -16,7 +16,10 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import * as $ from 'jquery';
+import { registerLocaleData } from '@angular/common';
+import localeTr from '@angular/common/locales/tr';
 
+registerLocaleData(localeTr, 'tr');
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
    return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
