@@ -15,7 +15,6 @@ import { HttpClient, HttpClientModule} from '@angular/common/http';
 // components
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
-import { DemoComponent } from './demo/demo.component';
 import * as $ from 'jquery';
 
 // AoT requires an exported function for factories
@@ -26,8 +25,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    DemoComponent
+    MainComponent
   ],
   imports: [
     BrowserModule,
