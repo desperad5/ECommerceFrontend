@@ -7,4 +7,5 @@ export class CommunicationService {
 	filterRequested = new EventEmitter();
 
 	addedToOrderCart = new EventEmitter();
+	vitrinLoaded=new EventEmitter();
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../../shared/classes/product';
 import { ProductList } from 'src/app/shared/classes/productList';
+import { CommunicationService } from 'src/app/shared/services/communication.service';
 
 @Component({
   selector: 'app-product-slider',
@@ -9,16 +10,21 @@ import { ProductList } from 'src/app/shared/classes/productList';
 })
 export class ProductSliderComponent implements OnInit {
   
-  @Input() productList: ProductList;
-  products:Product[];
+  products:any;
+  listing:any;
 
-  constructor() {
+  constructor(private communicationService:CommunicationService) {
     
    }
 
   ngOnInit() { 
-    debugger;
-    this.products = this.productList?this.productList.products:[];
+    
+    this.communicationService.vitrinLoaded.subscribe(data=>
+      {
+        debugger;
+        this.products=data.products;
+        this.listing=data.listing;
+      });
   }
   
   // Slick slider config
