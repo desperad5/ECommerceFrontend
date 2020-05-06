@@ -18,7 +18,7 @@ export class ProductSliderComponent implements OnInit {
 
   ngOnInit() { 
     debugger;
-    this.products = this.productList.products;
+    this.products = this.productList?this.productList.products:[];
   }
   
   // Slick slider config

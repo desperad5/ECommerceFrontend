@@ -1,6 +1,7 @@
 import { Product } from './product'
+import { ListingModel } from '../models/listing.model';
 export class ProductList{
-    name:string;
-    description:string;
-    products:Product[]
+    
+    products:Product[];
+    listing:ListingModel;
 }

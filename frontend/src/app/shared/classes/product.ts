@@ -26,6 +26,7 @@ export interface Product {
   size?: ProductTags[];
   tags?: ProductSize[];
   variants?: any[];
+  rating?:any;
 }
 
 // Color Filter

@@ -30,6 +30,10 @@ import { CategoriesComponent } from './footer/widgets/categories/categories.comp
 import { WhyWeChooseComponent } from './footer/widgets/why-we-choose/why-we-choose.component';
 import { CopyrightComponent } from './footer/widgets/copyright/copyright.component';
 import { SocialComponent } from './footer/widgets/social/social.component';
+import { InterceptService } from './services/intercept.service';
+import { CommunicationService } from './services/communication.service';
+import { AccountService } from './services/account.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   exports: [
@@ -75,7 +79,16 @@ import { SocialComponent } from './footer/widgets/social/social.component';
     WishlistService,
     CartService,
     OrderService,
-    PaginationService
+    PaginationService,
+    InterceptService,
+    {
+      provide: HTTP_INTERCEPTORS,
+			useClass: InterceptService,
+			multi: true
+    },
+    CommunicationService,
+    AccountService
+
   ]
 })
 export class SharedModule { }

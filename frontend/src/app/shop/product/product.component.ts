@@ -20,7 +20,6 @@ export class ProductComponent implements OnInit {
 
   public variantImage  :  any = ''; 
   public selectedItem  :  any = '';
-
   constructor(private router: Router, public productsService: ProductsService, 
     private wishlistService: WishlistService, private cartService: CartService) { 
       debugger;
