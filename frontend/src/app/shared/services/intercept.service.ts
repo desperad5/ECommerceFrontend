@@ -32,7 +32,7 @@ export class InterceptService implements HttpInterceptor {
 			tap(
 				event => {
 					if (event instanceof HttpResponse) {
-						debugger;
+						
 						if (event.status === 401) {
 							localStorage.removeItem('authToken');
 							localStorage.removeItem('email');
@@ -45,7 +45,7 @@ export class InterceptService implements HttpInterceptor {
 					}
 				},
 				error => {
-					debugger;
+					
 					if (error.status === 401) {
 						localStorage.removeItem('authToken');
 						localStorage.removeItem('email');

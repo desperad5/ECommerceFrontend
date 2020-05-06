@@ -27,7 +27,7 @@ import { MasonaryTwoGridComponent } from './portfolio/masonary-two-grid/masonary
 import { MasonaryThreeGridComponent } from './portfolio/masonary-three-grid/masonary-three-grid.component';
 import { MasonaryFourGridComponent } from './portfolio/masonary-four-grid/masonary-four-grid.component';
 import { MasonaryFullwidthComponent } from './portfolio/masonary-fullwidth/masonary-fullwidth.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -35,7 +35,8 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     PagesRoutingModule,
     SlickCarouselModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   declarations: [
     AboutUsComponent,

@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.productsService.getProductsByListingId(1).subscribe(data=>{
-      debugger;
+      
       this.communicationService.vitrinLoaded.emit(data);
     },
     (err) => {console.log(err);});

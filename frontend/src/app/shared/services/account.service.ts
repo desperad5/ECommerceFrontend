@@ -13,7 +13,7 @@ export class AccountService {
   constructor(private http: HttpClient, private router: Router) { }
 
   // properties needed
-  private baseUrlLogin = Constants.apiUrl+'/CustomerApi';
+  private baseUrlLogin = Constants.apiUrl+'CustomerApi';
   private loginStatus = new BehaviorSubject<boolean>(this.getLoginStatus());
   private username = new BehaviorSubject<string>(localStorage.getItem('username'));
   private userRole = new BehaviorSubject<string>(localStorage.getItem('userRole'));

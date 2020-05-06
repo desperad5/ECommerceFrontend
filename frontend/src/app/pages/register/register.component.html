@@ -4,14 +4,14 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="page-title">
-                    <h2>create account</h2>
+                    <h2>Hesap Açma</h2>
                 </div>
             </div>
             <div class="col-sm-6">
                 <nav aria-label="breadcrumb" class="theme-breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a [routerLink]="'/home/one'">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">create account</li>
+                        <li class="breadcrumb-item"><a [routerLink]="'/home'">Anasayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Hesap Yaratın</li>
                     </ol>
                 </nav>
             </div>
@@ -24,29 +24,63 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h3>create account</h3>
+                <h3>Hesap Oluştur</h3>
                 <div class="theme-card">
-                    <form class="theme-form">
+                    <form class="theme-form" #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && submit()">
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="email">First Name</label>
-                                <input type="text" class="form-control" id="fname" placeholder="First Name" required="">
+                                <label for="email">İsim</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" #firstName="ngModel" required minlength="3" placeholder="First Name" [(ngModel)]="register.firstName">
+                                <div *ngIf="firstName.invalid" class="alert alert-danger">
+
+                                <div *ngIf="firstName.errors.required">
+                                    Ad alanı gerekli.
+                                </div>
+                                <div *ngIf="firstName.errors.minlength">
+                                    Ad alanı minimum 3 karakter olmalı.
+                                </div>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="review">Last Name</label>
-                                <input type="password" class="form-control" id="lname" placeholder="Last Name" required="">
+                                <label for="review">Soyisim</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" #lastName="ngModel" required minlength="3" placeholder="Last Name" [(ngModel)]="register.lastName">
+                                <div *ngIf="lastName.invalid " class="alert alert-danger">
+
+                                    <div *ngIf="lastName.errors.required">
+                                        Soyisim alanı gerekli.
+                                    </div>
+                                    <div *ngIf="lastName.errors.minlength">
+                                        Soyisim alanı minimum 3 karakter olmalı.
+                                    </div>
+                                    </div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="email">email</label>
-                                <input type="text" class="form-control" id="email" placeholder="Email" required="">
+                                <label for="email">E-Posta</label>
+                                <input type="text" class="form-control" id="email" name="email" #email="ngModel" required minlength="5" placeholder="Email" required="" [(ngModel)]="register.email">
+                                <div *ngIf="email.invalid" class="alert alert-danger">
+
+                                    <div *ngIf="email.errors.required">
+                                        Eposta alanı gerekli.
+                                    </div>
+                                    <div *ngIf="email.errors.minlength">
+                                        Eposta alanı minimum 5 karakter olmalı.
+                                    </div>
+                                    </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="review">Password</label>
-                                <input type="password" class="form-control" id="review" placeholder="Enter your password" required="">
+                                <label for="review">Şifre</label>
+                                <input type="password" class="form-control" id="password" name="password" #password="ngModel" required minlength="3" placeholder="Enter your password" [(ngModel)]="register.password">
+                                <div *ngIf="password.invalid" class="alert alert-danger">
+
+                                    <div *ngIf="password.errors.required">
+                                        Şifre alanı gerekli.
+                                    </div>
+                                    
+                                    </div>
                             </div>
-                            <button class="btn btn-solid">create Account</button>
+                            <button class="btn btn-solid">Hesap Yarat</button>
                         </div>
                     </form>
                 </div>

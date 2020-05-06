@@ -26,16 +26,34 @@
             <div class="col-lg-6">
                 <h3>Giriş Yap</h3>
                 <div class="theme-card">
-                    <form class="theme-form">
+                    <form class="theme-form" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && loginWithEmail()">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" placeholder="Email" required="">
+                            <input type="text" class="form-control" name="email" id="email" #email="ngModel" required minlength="5" placeholder="Email" [(ngModel)]="login.email" >
+                            <div *ngIf="email.invalid" class="alert alert-danger">
+
+                                <div *ngIf="email.errors.required">
+                                    Eposta alanı gerekli.
+                                </div>
+                                <div *ngIf="email.errors.minlength">
+                                    Eposta alanı minimum 5 karakter olmalı.
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="review">Password</label>
-                            <input type="password" class="form-control" id="review" placeholder="Enter your password" required="">
+                            <input type="password" class="form-control" name="password" #password="ngModel" id="password" required minlength="3" placeholder="Şifrenizi giriniz"[(ngModel)]="login.password">
+                            <div *ngIf="password.invalid" class="alert alert-danger">
+
+                                <div *ngIf="password.errors.required">
+                                    Şifre alanı gerekli.
+                                </div>
+                                <div *ngIf="password.errors.minlength">
+                                    Şifre alanı minimum 3 karakter olmalı.
+                                </div>
+                            </div>
                         </div>
-                        <button class="btn btn-solid">Login</button>
+                        <button class="btn btn-solid">Giriş Yap</button>
                     </form>
                 </div>
             </div>

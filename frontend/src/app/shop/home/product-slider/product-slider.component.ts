@@ -21,7 +21,7 @@ export class ProductSliderComponent implements OnInit {
     
     this.communicationService.vitrinLoaded.subscribe(data=>
       {
-        debugger;
+        
         this.products=data.products;
         this.listing=data.listing;
       });
