@@ -41,18 +41,24 @@ export class CollectionLeftSidebarComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router,
     private productsService: ProductsService) { 
        this.route.params.subscribe(params => {
-          const category = params['category'];
+        debugger;
+          const category = Number(params['category']);
           this.productsService.getProductByCategory(category).subscribe(products => {
-             this.allItems = products  // all products
-             this.products = products.slice(0,8)
-             this.getTags(products)
-             this.getColors(products)
+            console.log(products);
+            //  this.allItems = products  // all products
+            //  this.products = products.slice(0,8)
+            //  this.getTags(products)
+            //  this.getColors(products)
+          });
+          this.productsService.getNewProdutByCategory(category).subscribe(products=>{
+            debugger;
+            console.log(products);
           })
        });
   }
 
   ngOnInit() {  
-    
+    debugger;
   }
   
   // Get current product tags

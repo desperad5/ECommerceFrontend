@@ -54,16 +54,12 @@ export class ProductsService {
   }
 
    // Get Products By category
-  public getProductByCategory(category: string): Observable<Product[]> {
-    return this.products().pipe(map(items => 
-       items.filter((item: Product) => {
-         if(category == 'all')
-            return item
-         else
-            return item.category === category; 
-        
-       })
-     ));
+  public getProductByCategory(id: number) {
+    return this.http.post(Constants.apiUrl + "Product/GetProductsByCategoryId",{"id":id, "itemCount":8, "pageNumber":1});
+  }
+
+  public getNewProdutByCategory(id:number){
+    return this.http.post(Constants.apiUrl + "Product/GetNewProductsByCategoryId",{"id":id, "itemCount":3, "pageNumber":1});
   }
   
    /*

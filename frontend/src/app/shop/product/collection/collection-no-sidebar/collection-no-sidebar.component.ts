@@ -37,7 +37,7 @@ export class CollectionNoSidebarComponent implements OnInit {
        this.route.params.subscribe(params => {
           const category = params['category'];
           this.productsService.getProductByCategory(category).subscribe(products => {
-             this.allProduct = products
+            //  this.allProduct = products
              this.setPage(1);
           })
        });

@@ -30,7 +30,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'left-sidebar/collection/:category',
+    path: 'category/:category',
     component: CollectionLeftSidebarComponent
   },
   {
