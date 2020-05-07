@@ -55,7 +55,7 @@ export class ProductsService {
 
    // Get Products By category
   public getProductByCategory(id: number) {
-    return this.http.post(Constants.apiUrl + "Product/GetProductsByCategoryId",{"id":id, "itemCount":8, "pageNumber":1});
+    return this.http.post(Constants.apiUrl + "Product/GetProductsByCategoryId",{"id":id});
   }
 
   public getNewProdutByCategory(id:number){

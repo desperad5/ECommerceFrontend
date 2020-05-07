@@ -3,8 +3,8 @@
   <h3 class="collapse-block-title">Marka</h3>
   <div class="collection-collapse-block-content">
     <div class="collection-brand-filter">
-      <div class="custom-control custom-checkbox collection-filter-checkbox" *ngFor="let filter of tagsFilters">
-        <input type="checkbox" class="custom-control-input" [value]="filter.id" (change)=checkedFilter($event) id="{{filter.id}}">
+      <div class="custom-control custom-checkbox collection-filter-checkbox"  *ngFor="let filter of tagsFilters">
+        <input type="checkbox" style="z-index:5" class="custom-control-input" [value]="filter.id" (change)=checkedFilter($event) id="{{filter.id}}">
         <label class="custom-control-label" for="{{filter.name}}">{{filter.name}}</label>
       </div>
     </div>

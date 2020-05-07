@@ -16,6 +16,7 @@ export class LeftMenuComponent implements OnInit {
   constructor(private productCategoryService: ProductCategoryService) { }
 
   ngOnInit() {
+    if(!localStorage.getItem("categoryMenu")){
      this.productCategoryService.getProductCategories().subscribe(data=>{
        
       this.menuItems=data;
@@ -26,9 +27,19 @@ export class LeftMenuComponent implements OnInit {
     });
     debugger;
     this.menuItems[0].type='sub';
-    this.menuItems[1].type='sub'; 
+    this.menuItems[1].type='sub';
+    localStorage.setItem("categoryMenu",JSON.stringify(this.menuItems));
     var items=this.menuItems;
     });
+  }
+  else{
+    debugger;
+    var menu=eval(localStorage.getItem("categoryMenu"));
+    /* var result = Object.keys(menu).map(function(key) {
+      return [Number(key), menu[key]];
+    }); */
+    this.menuItems=menu;
+  }
     // this.menuItems = MENUITEMS.filter(menuItem => menuItem);
 
     
@@ -38,7 +49,7 @@ export class LeftMenuComponent implements OnInit {
     category.path = "/home/category/" + category.id;
     category.megaMenu = false;
     if(category.childCategories &&category.childCategories.length>0){
-      category.type = 'sub';
+      category.type = 'link';
       category.childCategories.forEach(x=>this.setMenuItems(x));
       
     }

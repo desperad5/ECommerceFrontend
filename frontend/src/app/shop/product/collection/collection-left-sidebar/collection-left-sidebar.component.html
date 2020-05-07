@@ -74,7 +74,7 @@
                           <div class="col-12">
                             <div class="product-filter-content">
                               <div class="search-count">
-                                <h5>1-{{products.length}} arası gösteriliyor</h5>
+                                <h5>1-{{filterItems().length}} arası gösteriliyor</h5>
                               </div>
                               <div class="collection-grid-view">
                                 <ul>
@@ -113,39 +113,39 @@
                     <div class="product-wrapper-grid">
                       <div class="container-fluid">
                         <div class="row" [@Animation]="animation" *ngIf="hasProducts">
-                          <div class="col-xl-3 col-md-6 col-grid-box" *ngFor="let product of products | orderBy:sortByOrder">
+                          <div class="col-xl-3 col-md-6 col-grid-box" *ngFor="let product of filterItems() | orderBy:sortByOrder">
                             <div class="product-box">
                               <app-product [product]="product"></app-product>
                             </div>
                             <!-- Infinite Scroll -->
-                            <!-- <div infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="2000" (scrolled)="onScroll()" *ngIf="filterItems().length">
-                            </div> --> 
+                            <div infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="2000" (scrolled)="onScroll()" *ngIf="filterItems().length">
+                            </div>
                           </div>
                           
-                          <!-- <div class="col-sm-12 text-center section-b-space mt-5 no-found" *ngIf="!filterItems().length">
+                          <div class="col-sm-12 text-center section-b-space mt-5 no-found" *ngIf="!filterItems().length">
                             <img src="assets/images/empty-search.jpg" class="img-fluid mb-4">
-                            <h3>Sorry! Couldn't find the product you were looking For!!!    </h3>
-                            <p>Please check if you have misspelt something or try searching with other words.</p>
-                            <a [routerLink]="'/home/one'" class="btn btn-solid">continue shopping</a>
-                          </div> -->
+                            <h3>Şanssızlık! Aradığınız ürünü bulamadınız sanırım!!!    </h3>
+                            <p>Başka kelimelerle tekrar deneyin</p>
+                            <a [routerLink]="'/home'" class="btn btn-solid">Alışverişe devam edin</a>
+                          </div>
                         </div>
                         
                       </div>
                     </div>
-                      <!-- <div class="product-infinitescroll">
+                      <div class="product-infinitescroll">
                       <div class="theme-paggination-block">
                         <div class="container-fluid p-0">
                           <div class="row">
                             <div class="text-center col-sm-12">
                               <div class="infinite-scrolling mt-4 mb-4 d-inline-block">
                                 <img src="assets/images/loader.gif" *ngIf="!finished && filterItems().length">
-                                <div class="loading-more active" *ngIf="finished && filterItems().length">No More Products</div>
+                                <div class="loading-more active" *ngIf="finished && filterItems().length">Daha Fazla ürün yok</div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div> -->
+                    </div>
                     <!-- End Infinite Scroll -->
                   </div>
                   <div *ngIf="!hasProducts"><span style="font-size:30px">Kategoride sergilenecek ürün bulunamadı.</span></div>

@@ -22,6 +22,7 @@ export class BrandComponent implements OnInit {
     debugger; 
   	  this.tagFilters.emit(this.checkedTagsArray);   // Pass value Using emit 
       $('.collapse-block-title').on('click', function(e) {
+        debugger;
         e.preventDefault;
         var speed = 300;
         var thisItem = $(this).parent(),
