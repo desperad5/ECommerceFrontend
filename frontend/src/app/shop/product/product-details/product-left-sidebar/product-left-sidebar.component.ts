@@ -25,7 +25,13 @@ public iStyle               = "width:100%; height:100%;"
     private cartService: CartService) {
       this.route.params.subscribe(params => {
         const id = +params['id'];
-        this.productsService.getProduct(id).subscribe(product => this.product = product)
+        this.productsService.getProductById(Number(id)).subscribe(product=>{
+          this.product=product;
+        });
+        this.productsService.getNewProduct().subscribe(productList => {
+
+        })
+        // this.productsService.getProduct(id).subscribe(product => this.product = product)
       });
   }
 

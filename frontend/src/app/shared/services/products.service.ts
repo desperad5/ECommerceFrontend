@@ -53,6 +53,9 @@ export class ProductsService {
     return this.products().pipe(map(items => { return items.find((item: Product) => { return item.id === id; }); }));
   }
 
+  public getProductById(id:number){
+    return this.http.post(Constants.apiUrl + "Product/GetProductsWithImages",{"productId":id});
+  }
    // Get Products By category
   public getProductByCategory(id: number) {
     return this.http.post(Constants.apiUrl + "Product/GetProductsByCategoryId",{"id":id, "itemCount":8, "pageNumber":1});
@@ -60,6 +63,10 @@ export class ProductsService {
 
   public getNewProdutByCategory(id:number){
     return this.http.post(Constants.apiUrl + "Product/GetNewProductsByCategoryId",{"id":id, "itemCount":3, "pageNumber":1});
+  }
+
+  public getNewProduct()  {
+    return this.http.post(Constants.apiUrl + "Product/GetNewProduct",{"itemCount":3,});
   }
   
    /*
