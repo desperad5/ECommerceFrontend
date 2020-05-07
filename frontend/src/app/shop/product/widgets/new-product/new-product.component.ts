@@ -8,13 +8,15 @@ import { ProductsService } from '../../../../shared/services/products.service';
   styleUrls: ['./new-product.component.scss']
 })
 export class NewProductComponent implements OnInit {
-  
+  @Input()  newProducts : any[] = [];
   public products : Product[] = [];	
 
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-  	this.productsService.getProducts().subscribe(product => this.products = product);
+    debugger;
+    this.products=this.newProducts;
+  	/* this.productsService.getProducts().subscribe(product => this.products = product); */
   }
 
 }

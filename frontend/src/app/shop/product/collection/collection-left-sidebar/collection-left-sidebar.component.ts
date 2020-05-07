@@ -25,7 +25,8 @@ import * as $ from 'jquery';
 })
 export class CollectionLeftSidebarComponent implements OnInit {
 
-  public products     :   Product[] = [];
+  public products     :   any[] = [];
+  public newProducts  :   any[] = [];
   public items        :   Product[] = [];
   public allItems     :   Product[] = [];
   public colorFilters :   ColorFilter[] = [];
@@ -34,7 +35,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public colors       :   any[] = [];
   public sortByOrder  :   string = '';   // sorting
   public animation    :   any;   // Animation
-
+  public categoryName: string='';
+  public hasProducts:boolean=true;
   lastKey = ''      // key to offset next query from
   finished = false  // boolean when end of data is reached
   
@@ -45,15 +47,26 @@ export class CollectionLeftSidebarComponent implements OnInit {
           const category = Number(params['category']);
           this.productsService.getProductByCategory(category).subscribe(products => {
             console.log(products);
-            //  this.allItems = products  // all products
-            //  this.products = products.slice(0,8)
+              this.categoryName=products["categoryName"];
+              this.products = products["products"].slice(0,8);
+              this.tags=products["brands"];
+              this.hasProducts=true;
             //  this.getTags(products)
             //  this.getColors(products)
-          });
+          },error => {
+            debugger;
+            console.log(error);
+            if(error.error==='No Product in the Category'){
+              this.hasProducts=false;
+            }
+        });
           this.productsService.getNewProdutByCategory(category).subscribe(products=>{
             debugger;
             console.log(products);
-          })
+            this.newProducts = products["products"];
+          },error => {
+            console.log(error);
+        })
        });
   }
 
@@ -62,7 +75,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
   }
   
   // Get current product tags
-  public getTags(products) {
+  /* public getTags(products) {
      var uniqueBrands = []
      var itemBrand = Array();
      products.map((product, index) => { 
@@ -77,10 +90,10 @@ export class CollectionLeftSidebarComponent implements OnInit {
           itemBrand.push({brand:uniqueBrands[i]})
      }
      this.tags = itemBrand
-  }
+  } */
   
   // Get current product colors
-  public getColors(products) {
+  /* public getColors(products) {
      var uniqueColors = []
      var itemColor = Array();
      products.map((product, index) => {
@@ -96,7 +109,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
      }
      this.colors = itemColor
   }
-
+ */
    
   // Animation Effect fadeIn
   public fadeIn() {
@@ -110,7 +123,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
 
  
   // Initialize filetr Items
-  public filterItems(): Product[] {
+  /* public filterItems(): Product[] {
       return this.items.filter((item: Product) => {
           const Colors: boolean = this.colorFilters.reduce((prev, curr) => { // Match Color
             if(item.colors){
@@ -128,7 +141,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
           }, true);
           return Colors && Tags; // return true
       });
-  }
+  } */
   
   // Update tags filter
   public updateTagFilters(tags: any[]) {
@@ -145,7 +158,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
   // Update price filter
   public updatePriceFilters(price: any) {
       let items: any[] = [];
-      this.products.filter((item: Product) => {
+      this.products.filter((item: any) => {
           if (item.price >= price[0] && item.price <= price[1] )  {            
              items.push(item); // push in array
           } 

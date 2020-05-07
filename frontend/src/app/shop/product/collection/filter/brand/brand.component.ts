@@ -10,15 +10,16 @@ declare var $: any;
 export class BrandComponent implements OnInit {
   
   // Using Input nad Output EventEmitter
-  @Input()  tagsFilters : ProductTags[] = [];
-  @Output() tagFilters  : EventEmitter<ProductTags[]> = new EventEmitter<ProductTags[]>();
+  @Input()  tagsFilters : any[] = [];
+  @Output() tagFilters  : EventEmitter<any[]> = new EventEmitter<any[]>();
   
   // Array
   public checkedTagsArray: any[] = [];
   
   constructor() { }
 
-  ngOnInit() {  
+  ngOnInit() { 
+    debugger; 
   	  this.tagFilters.emit(this.checkedTagsArray);   // Pass value Using emit 
       $('.collapse-block-title').on('click', function(e) {
         e.preventDefault;
@@ -37,6 +38,7 @@ export class BrandComponent implements OnInit {
 
   // value checked call this function
   checkedFilter(event){
+    debugger;
       let index = this.checkedTagsArray.indexOf(event.target.value);  // checked and unchecked value
        if (event.target.checked)   
            this.checkedTagsArray.push(event.target.value); // push in array cheked value

@@ -24,7 +24,7 @@
         <!-- Simple Menu Start-->
         <ng-container *ngIf="!menuItem.megaMenu">
           <li *ngFor="let childCategoryItem of menuItem.childCategories">
-            <a href="javascript:void(0)" *ngIf="childCategoryItem.type === 'sub'">
+            <a href="javascript:void(0)" *ngIf="childCategoryItem.type === 'sub'" class="highlighted">
               {{childCategoryItem.categoryName}}
            </a>
             <!-- Link -->
