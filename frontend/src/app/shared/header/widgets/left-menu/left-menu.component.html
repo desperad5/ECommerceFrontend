@@ -7,50 +7,57 @@
          {{menuItem.categoryName}}
       </a>
       <!-- Link -->
-      <a [routerLink]="!menuItem.type ? null : [menuItem.path]" *ngIf="menuItem.type === 'link'">
+      <a [routerLink]="menuItem.path" *ngIf="menuItem.type === 'link'">
          {{menuItem.categoryName}}
       </a>
       <!-- External Link -->
-      <a href="{{ !menuItem.type ? null : menuItem.path }}" *ngIf="menuItem.type === 'extLink'">
+      <!-- <a href="{{ !menuItem.type ? null : menuItem.path }}" *ngIf="menuItem.type === 'extLink'">
          {{menuItem.categoryName}}
       </a>
       <!-- External Tab Link -->
       <a href="{{ !menuItem.type ? null : menuItem.path }}" *ngIf="menuItem.type === 'extTabLink'">
          {{menuItem.categoryName | translate}}
-      </a>
+      </a> 
       <!-- 2nd Level Menu -->
       <ul [class]="menuItem.megaMenu ? 'mega-menu clothing-menu' : ''" *ngIf="menuItem.childCategories">
         
         <!-- Simple Menu Start-->
         <ng-container *ngIf="!menuItem.megaMenu">
           <li *ngFor="let childCategoryItem of menuItem.childCategories">
+            <a href="javascript:void(0)" *ngIf="childCategoryItem.type === 'sub'">
+              {{childCategoryItem.categoryName}}
+           </a>
             <!-- Link -->
-            <a [routerLink]="!childCategoryItem.type ? null : [childCategoryItem.path]" *ngIf="childCategoryItem.type === 'link'">
+            <a [routerLink]="childCategoryItem.path" *ngIf="childCategoryItem.type === 'link'">
                {{childCategoryItem.categoryName}}
             </a>
             <!-- External Link -->
-            <a href="{{ !childCategoryItem.type ? null : childCategoryItem.path }}" *ngIf="childCategoryItem.type === 'extLink'">
+            <!-- <a href="{{ !childCategoryItem.type ? null : childCategoryItem.path }}" *ngIf="childCategoryItem.type === 'extLink'">
               {{childCategoryItem.categoryName}}
             </a>
             <!-- External Tab Link -->
-            <a href="{{ !childCategoryItem.type ? null : childCategoryItem.path }}" target="_blank" *ngIf="childCategoryItem.type === 'extTabLink'">
+            <!--<a href="{{ !childCategoryItem.type ? null : childCategoryItem.path }}" target="_blank" *ngIf="childCategoryItem.type === 'extTabLink'">
                {{childCategoryItem.categoryName}}
-            </a>
+            </a> -->
             <!-- 3rd Level Menu -->
             <ul *ngIf="childCategoryItem.childCategories">
               <li *ngFor="let childrenSubItem of childCategoryItem.childCategories">
+                <a href="javascript:void(0)" *ngIf="childrenSubItem.type === 'sub'">
+                  {{childrenSubItem.categoryName}}
+               </a>
                   <!-- Link -->
-                  <a [routerLink]="!childrenSubItem.type ? null : [childrenSubItem.path]" *ngIf="childrenSubItem.type === 'link'">
+                  <a [routerLink]="childrenSubItem.path"
+                   *ngIf="childrenSubItem.type === 'link'">
                      {{childrenSubItem.categoryName}}
                   </a>
                   <!-- External Link -->
-                  <a href="{{ !childrenSubItem.type ? null : childrenSubItem.path }}" *ngIf="childrenSubItem.type === 'extLink'">
+                  <!-- <a href="{{ !childrenSubItem.type ? null : childrenSubItem.path }}" *ngIf="childrenSubItem.type === 'extLink'">
                     {{childrenSubItem.categoryName}}
-                  </a>
+                  </a> -->
                   <!-- External Tab Link -->
-                  <a href="{{ !childrenSubItem.type ? null : childrenSubItem.path }}" target="_blank" *ngIf="childrenSubItem.type === 'extTabLink'">
+                  <!-- <a href="{{ !childrenSubItem.type ? null : childrenSubItem.path }}" target="_blank" *ngIf="childrenSubItem.type === 'extTabLink'">
                      {{childrenSubItem.categoryName}}
-                  </a>
+                  </a> -->
                   <!-- 4th Level Menu -->
                   
               </li>
