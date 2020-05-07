@@ -4,14 +4,14 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="page-title">
-          <h2>product</h2>
+          <h2>{{product.name}}</h2>
         </div>
       </div>
       <div class="col-sm-6">
         <nav aria-label="breadcrumb" class="theme-breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a [routerLink]="'/home/one'">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">product</li>
+            <li class="breadcrumb-item"><a [routerLink]="'/home/one'">Ana Sayfa</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Ürün</li>
           </ol>
         </nav>
       </div>
@@ -63,8 +63,8 @@
               <div class="col-lg-6 rtl-text">
                 <div class="product-right">
                   <h2>{{product.name}}</h2>
-                  <h4 *ngIf="!productsService?.catalogMode"><del>{{product.salePrice | currency:productsService?.currency:'symbol'}}</del><span>{{product.discount}}% off</span></h4>
-                  <h3 *ngIf="!productsService?.catalogMode">{{product.price | currency:productsService?.currency:'symbol'}}</h3>
+                  <h4 *ngIf="!productsService?.catalogMode"><del>{{product.salePrice | currency:productsService?.currency:'symbol':'0.2-2':'tr'}}</del><span>{{product.discount}}% off</span></h4>
+                  <h3 *ngIf="!productsService?.catalogMode">{{product.price | currency:productsService?.currency:'symbol':'0.2-2':'tr'}}</h3>
                   <ul class="color-variant" *ngIf="product.variants && !productsService?.catalogMode">
                     <li [class]="variant.color" (click)="slickModal.slickGoTo(i)" *ngFor="let variant of product.variants let i = index"></li>
                   </ul>
@@ -90,7 +90,7 @@
                     </div>
                     <h5 class="avalibility" *ngIf="counter <= product.stock"><span>In Stock</span></h5>
                     <h5 class="avalibility" *ngIf="counter > product.stock"><span>Out of Stock</span></h5>
-                    <h6 class="product-title">quantity</h6>
+                    <h6 class="product-title">Adet</h6>
                     <div class="qty-box">
                       <div class="input-group">
                         <span class="input-group-prepend">
@@ -108,15 +108,15 @@
                     </div>
                   </div>
                   <div class="product-buttons" *ngIf="!productsService?.catalogMode">
-                    <a [routerLink]="" (click)="addToCart(product, counter)" class="btn btn-solid" [class.disabled]="counter > product.stock">add to cart</a>
-                    <a [routerLink]="" (click)="buyNow(product, counter)" class="btn btn-solid" [class.disabled]="counter > product.stock">buy now</a>
+                    <a [routerLink]="" (click)="addToCart(product, counter)" class="btn btn-solid" [class.disabled]="counter > product.stock">Sepete Ekle</a>
+                    <a [routerLink]="" (click)="buyNow(product, counter)" class="btn btn-solid" [class.disabled]="counter > product.stock">Satın Al</a>
                   </div>
                   <div class="border-product">
-                    <h6 class="product-title">product details</h6>
+                    <h6 class="product-title">Ürün Detayları</h6>
                     <p>{{product.shortDetails}}</p>
                   </div>
                   <div class="border-product">
-                    <h6 class="product-title">share it</h6>
+                    <h6 class="product-title">Paylaş</h6>
                     <div class="product-icon">
                       <ul class="product-social">
                         <li><a href="http://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
@@ -125,11 +125,11 @@
                         <li><a href="http://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>
                       </ul>
                       <form class="d-inline-block" *ngIf="!productsService?.catalogMode">
-                        <button class="wishlist-btn" (click)="addToWishlist(product)"><i class="fa fa-heart"></i><span class="title-font">Add To WishList</span></button>
+                        <button class="wishlist-btn" (click)="addToWishlist(product)"><i class="fa fa-heart"></i><span class="title-font">Favorilere Ekle</span></button>
                       </form>
                     </div>
                   </div>
-                  <div class="border-product" *ngIf="!productsService?.catalogMode">
+                  <!-- <div class="border-product" *ngIf="!productsService?.catalogMode">
                     <h6 class="product-title">Time Reminder</h6>
                     <div class="timer">
                       <p id="timer">
@@ -150,7 +150,7 @@
                         </span>
                       </p>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -161,11 +161,11 @@
                 <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
                   <li class="nav-item">
                     <a class="nav-link active" id="top-home-tab" data-toggle="tab" href="#top-home" role="tab" aria-selected="true">
-                <i class="icofont icofont-ui-home"></i>Description</a>
+                <i class="icofont icofont-ui-home"></i>Açıklama</a>
                     <div class="material-border"></div>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" id="profile-top-tab" data-toggle="tab" href="#top-profile" role="tab" aria-selected="false"><i class="icofont icofont-man-in-glasses"></i>Details</a>
+                    <a class="nav-link" id="profile-top-tab" data-toggle="tab" href="#top-profile" role="tab" aria-selected="false"><i class="icofont icofont-man-in-glasses"></i>Detaylar</a>
                     <div class="material-border"></div>
                   </li>
                   <li class="nav-item">
@@ -175,7 +175,7 @@
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" id="review-top-tab" data-toggle="tab" href="#top-review" role="tab" aria-selected="false">
-                        <i class="icofont icofont-contacts"></i>Write Review</a>
+                        <i class="icofont icofont-contacts"></i>Yorum Yaz</a>
                     <div class="material-border"></div>
                   </li>
                 </ul>
@@ -239,23 +239,23 @@
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <label for="name">Name</label>
-                          <input type="text" class="form-control" id="name" placeholder="Enter Your name" required>
+                          <label for="name">Ad</label>
+                          <input type="text" class="form-control" id="name" placeholder="Adınızı giriniz" required>
                         </div>
                         <div class="col-md-6">
-                          <label for="email">Email</label>
-                          <input type="text" class="form-control" id="email" placeholder="Email" required>
+                          <label for="email">E-Posta</label>
+                          <input type="text" class="form-control" id="email" placeholder="E-Posta" required>
                         </div>
                         <div class="col-md-12">
-                          <label for="review">Review Title</label>
-                          <input type="text" class="form-control" id="review" placeholder="Enter your Review Subjects" required>
+                          <label for="review">Başlık</label>
+                          <input type="text" class="form-control" id="review" placeholder="Yorum Başlığını Giriniz" required>
                         </div>
                         <div class="col-md-12">
-                          <label for="review">Review Title</label>
-                          <textarea class="form-control" placeholder="Wrire Your Testimonial Here" id="exampleFormControlTextarea1" rows="6"></textarea>
+                          <label for="review">Başlık</label>
+                          <textarea class="form-control" placeholder="Görüşlerinizi Buradan Yazabilirsiniz" id="exampleFormControlTextarea1" rows="6"></textarea>
                         </div>
                         <div class="col-md-12">
-                          <button class="btn btn-solid" type="submit">Submit YOur Review</button>
+                          <button class="btn btn-solid" type="submit">Gönder</button>
                         </div>
                       </div>
                     </form>

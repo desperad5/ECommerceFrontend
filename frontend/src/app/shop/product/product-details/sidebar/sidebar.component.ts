@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from 'src/app/shared/services/products.service';
 
 @Component({
   selector: 'product-details-sidebar',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  newProducts : any[] = [];
+  constructor(private productService: ProductsService) { 
+    this.productService.getNewProduct().subscribe((productList:any[])=>{
+      this.newProducts = productList;
+    })
+  }
 
   ngOnInit() {
   }
