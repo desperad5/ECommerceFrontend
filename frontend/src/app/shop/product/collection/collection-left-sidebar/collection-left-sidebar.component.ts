@@ -37,6 +37,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public animation    :   any;   // Animation
   public categoryName: string='';
   public hasProducts:boolean=true;
+  public max:number;
+  public min:number
   lastKey = ''      // key to offset next query from
   finished = false  // boolean when end of data is reached
   
@@ -52,6 +54,8 @@ export class CollectionLeftSidebarComponent implements OnInit {
               this.products = this.allItems.slice(0,8);
               this.tags=products["brands"];
               this.hasProducts=true;
+              this.max = this.allItems.reduce((a, b)=>Math.max(a.price, b.price)); 
+              this.min = this.allItems.reduce((a, b)=>Math.min(a.price, b.price)); 
             //  this.getTags(products)
             //  this.getColors(products)
           },error => {
@@ -126,15 +130,12 @@ export class CollectionLeftSidebarComponent implements OnInit {
   // Initialize filetr Items
   public filterItems(): any[] {
       return this.items.filter((item: any) => {
-          const Tags: boolean = this.tagsFilters.reduce((prev, curr) => {
-             debugger;
+          if(this.tagsFilters.length>0){
             if(item.brandId) {
-              if (item.brandId===curr) {
-                return prev && true;
-              } 
-            }
-          }, true);
-          return  Tags; // return true
+              return this.tagsFilters.includes(item.brandId.toString());
+             }
+             } 
+             return true;
       });
   }
   
@@ -197,21 +198,20 @@ export class CollectionLeftSidebarComponent implements OnInit {
   // Infinite scroll
   public onScroll() {
     this.lastKey = _.last(this.allItems)['id'];
-    if (this.lastKey != _.last(this.items)['id']) {
-       this.finished = false
-    }   
-    // If data is identical, stop making queries
-    if (this.lastKey == _.last(this.items)['id']) {
-       this.finished = true
-    }
-    if(this.products.length < this.allItems.length){  
-       let len = this.products.length;
-       for(var i = len; i < len+4; i++){
-         if(this.allItems[i] == undefined) return true
-          debugger;
-           this.products.push(this.allItems[i]);
-       }
-    }
+      if (this.lastKey != _.last(this.items)['id']) {
+         this.finished = false
+      }   
+      // If data is identical, stop making queries
+      if (this.lastKey == _.last(this.items)['id']) {
+         this.finished = true
+      }
+      if(this.products.length < this.allItems.length){  
+         let len = this.products.length;
+         for(var i = len; i < len+4; i++){
+           if(this.allItems[i] == undefined) return true
+             this.products.push(this.allItems[i]);
+         }
+      }
   }
   
   // sorting type ASC / DESC / A-Z / Z-A etc.
