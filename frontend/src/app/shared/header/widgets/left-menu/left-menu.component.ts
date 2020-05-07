@@ -12,31 +12,40 @@ declare var $: any;
 })
 export class LeftMenuComponent implements OnInit {
 
-  public menuItems: ProductCategory[] = [];
+  public menuItems: any[] = [];
   constructor(private productCategoryService: ProductCategoryService) { }
 
   ngOnInit() {
-    this.menuItems = this.productCategoryService.getProductCategories();
+     this.productCategoryService.getProductCategories().subscribe(data=>{
+       
+      this.menuItems=data;
+      this.menuItems.forEach(category => {
+        this.setMenuItems(category);
+       
+      
+    });
+    debugger;
+    this.menuItems[0].type='sub';
+    this.menuItems[1].type='sub'; 
+    var items=this.menuItems;
+    });
     // this.menuItems = MENUITEMS.filter(menuItem => menuItem);
 
-    this.menuItems.forEach(category => {
-      this.setMenuItems(category);
     
-    
-  })
   
   }
   private setMenuItems(category: ProductCategory){
     category.path = "/home/category/" + category.id;
     category.megaMenu = false;
-    if(!category.childCategories ||category.childCategories.length==0){
-      category.type = 'link';
+    if(category.childCategories &&category.childCategories.length>0){
+      category.type = 'sub';
+      category.childCategories.forEach(x=>this.setMenuItems(x));
       
     }
     else{
-      category.type = 'sub';
+      category.type = 'link';
       category.megaMenu = false;
-      category.childCategories.forEach(x=>this.setMenuItems(x));
+      
     }
   }
 

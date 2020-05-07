@@ -15,16 +15,16 @@
          {{menuItem.categoryName}}
       </a>
       <!-- External Tab Link -->
-      <a href="{{ !menuItem.type ? null : menuItem.path }}" *ngIf="menuItem.type === 'extTabLink'">
+      <!-- <a href="{{ !menuItem.type ? null : menuItem.path }}" *ngIf="menuItem.type === 'extTabLink'">
          {{menuItem.categoryName | translate}}
-      </a> 
+      </a>  -->
       <!-- 2nd Level Menu -->
-      <ul [class]="menuItem.megaMenu ? 'mega-menu clothing-menu' : ''" *ngIf="menuItem.childCategories">
+      <ul [class]="menuItem.megaMenu ? 'mega-menu clothing-menu' : 'sm pixelstrap sm-vertical'" *ngIf="menuItem.childCategories">
         
         <!-- Simple Menu Start-->
         <ng-container *ngIf="!menuItem.megaMenu">
           <li *ngFor="let childCategoryItem of menuItem.childCategories">
-            <a href="javascript:void(0)" *ngIf="childCategoryItem.type === 'sub'" class="highlighted">
+            <a href="javascript:void(0)" *ngIf="childCategoryItem.type === 'sub'">
               {{childCategoryItem.categoryName}}
            </a>
             <!-- Link -->
@@ -92,7 +92,7 @@
               </div>
             </div>
             <div class="col-xl-4">
-                <a [routerLink]="['/home/one']" class="mega-menu-banner"><img src="assets/images/mega-menu/bag.jpg" alt="" class="img-fluid"></a>
+                <a [routerLink]="['/home']" class="mega-menu-banner"><img src="assets/images/mega-menu/side-banner.jpg" alt="" class="img-fluid"></a>
             </div>
           </div>
         </li>

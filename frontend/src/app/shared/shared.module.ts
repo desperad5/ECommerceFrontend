@@ -34,6 +34,7 @@ import { InterceptService } from './services/intercept.service';
 import { CommunicationService } from './services/communication.service';
 import { AccountService } from './services/account.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProductCategoryService } from './services/productCategory.service';
 
 @NgModule({
   exports: [
@@ -80,6 +81,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     CartService,
     OrderService,
     PaginationService,
+    ProductCategoryService,
     InterceptService,
     {
       provide: HTTP_INTERCEPTORS,
