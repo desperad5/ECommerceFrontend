@@ -23,9 +23,9 @@ export class PriceComponent implements OnInit {
 
   // rangeChanged
   priceChanged(event:any) {
-    setInterval(() => {
+    debugger;
       this.priceFilters.emit(event);
-    }, 1000);
+   
   }
 
 }

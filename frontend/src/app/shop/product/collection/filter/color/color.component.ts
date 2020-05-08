@@ -11,18 +11,19 @@ export class ColorComponent implements OnInit {
   public activeItem : any = '';
 
   // Using Input and Output EventEmitter
-  @Input()  colorsFilters  :  ColorFilter[] = [];
-  @Output() colorFilters   :  EventEmitter<ColorFilter[]> = new EventEmitter<ColorFilter[]>();
+  @Input()  colorsFilters  :  any[] = [];
+  @Output() colorFilters   :  EventEmitter<any[]> = new EventEmitter<any[]>();
 
   constructor() { }
   
   ngOnInit() {  }
 
   // Click to call function 
-  public changeColor(colors: ColorFilter) {
-    this.activeItem = colors.color
-    if(colors.color) {
-      this.colorFilters.emit([colors]);
+  public changeColor(colors: any) {
+    debugger;
+    this.activeItem = colors.name;
+    if(colors.name) {
+      this.colorFilters.emit([colors.name]);
     } else {
       this.colorFilters.emit([]);
     }
