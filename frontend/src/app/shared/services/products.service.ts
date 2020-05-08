@@ -54,7 +54,7 @@ export class ProductsService {
   }
 
   public getProductById(id:number){
-    return this.http.post(Constants.apiUrl + "Product/GetProductsWithImages",{"productId":id});
+    return this.http.post(Constants.apiUrl + "Product/GetProductsWithImages",{"id":id});
   }
    // Get Products By category
   public getProductByCategory(id: number) {
