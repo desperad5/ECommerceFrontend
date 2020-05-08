@@ -32,6 +32,7 @@
             </div>
             <div class="collection-filter-block">
               <app-brand [tagsFilters]="tags" (tagFilters)="updateTagFilters($event)" *ngIf="tags.length"></app-brand>
+              <app-size [sizesFilters]="sizes" (sizeFilters)="updateSizeFilters($event)" *ngIf="sizes.length"></app-size>
                <app-color [colorsFilters]="colors" (colorFilters)="updateColorFilters($event)" *ngIf="colors.length"></app-color>
               <!-- <app-price [min]="min" [max]="max" (priceFilters)="updatePriceFilters($event)"></app-price> -->
             </div>

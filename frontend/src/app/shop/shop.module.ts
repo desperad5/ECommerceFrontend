@@ -57,6 +57,7 @@ import { SuccessComponent } from './product/success/success.component';
 import { ExitPopupComponent } from './product/widgets/exit-popup/exit-popup.component';
 import { AgeVerificationComponent } from './product/widgets/age-verification/age-verification.component';
 import { NewsletterComponent } from './product/widgets/newsletter/newsletter.component';
+import { SizeComponent } from './product/collection/filter/size/size.component';
 
 @NgModule({
   exports: [ExitPopupComponent],
@@ -96,6 +97,7 @@ import { NewsletterComponent } from './product/widgets/newsletter/newsletter.com
     CollectionNoSidebarComponent,
     ColorComponent,
     BrandComponent,
+    SizeComponent,
     PriceComponent,
     ProductLeftSidebarComponent,
     ProductRightSidebarComponent,

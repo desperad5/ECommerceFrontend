@@ -31,6 +31,7 @@ export class CollectionLeftSidebarComponent implements OnInit {
   public allItems: any[] = [];
   public colorFilters: any[] = [];
   public tagsFilters: any[] = [];
+  public sizesFilters: any[] = [];
   public priceFilters: any[] = [];
   public tags: any[] = [];
   public colors: any[] = [];
@@ -151,12 +152,27 @@ export class CollectionLeftSidebarComponent implements OnInit {
     return this.allItems.filter((item: any) => {
       var brandFilter = false;
       var colorFilter = false;
+      var sizeFilter=false;
       if (this.tagsFilters.length > 0) {
         if (item.brandId) {
           brandFilter = this.tagsFilters.includes(item.brandId.toString());
         }
       }
-      else{brandFilter=true;}
+    
+    else{brandFilter=true;}
+      if (this.sizesFilters.length > 0) {
+        if (item.variations && item.variations.length > 0) {
+          item.variations.forEach(variation => {
+            debugger;
+            if (this.sizesFilters.includes(variation.sizeValue)) {
+              sizeFilter=true;
+            }
+          }
+          );
+        }
+        }
+        else{sizeFilter=true;}
+      
       if (this.colorFilters.length > 0) {
 
         if (item.variations && item.variations.length > 0) {
@@ -169,13 +185,17 @@ export class CollectionLeftSidebarComponent implements OnInit {
         }
       }
       else{colorFilter=true;}
-      return brandFilter&&colorFilter;
+      return brandFilter&&colorFilter&&sizeFilter;
     });
   }
 
   // Update tags filter
   public updateTagFilters(tags: any[]) {
     this.tagsFilters = tags;
+    this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
+  }
+  public updateSizeFilters(tags: any[]) {
+    this.sizesFilters = tags;
     this.animation == 'fadeOut' ? this.fadeIn() : this.fadeOut(); // animation
   }
 
